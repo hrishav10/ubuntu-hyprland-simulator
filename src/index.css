@@ -1,0 +1,145 @@
+@import "tailwindcss";
+@import "@xterm/xterm/css/xterm.css";
+
+:root {
+  --accent: #e95420;
+  --win-opacity: 0.94;
+  --ui-font-size: 14px;
+  --rounding: 10px;
+}
+
+[data-theme="ubuntu-dark"] {
+  --bg: #17141a;
+  --surface: #232028;
+  --surface-2: #2e2a35;
+  --surface-3: #3a3542;
+  --border: rgba(255, 255, 255, 0.09);
+  --text: #f2f0f5;
+  --muted: #a79fb3;
+  --panel: rgba(23, 20, 26, 0.88);
+  --hover: rgba(255, 255, 255, 0.07);
+}
+[data-theme="ubuntu-light"] {
+  --bg: #e8e4ec;
+  --surface: #f7f5fa;
+  --surface-2: #efeaf4;
+  --surface-3: #e2daea;
+  --border: rgba(30, 20, 50, 0.12);
+  --text: #241d2e;
+  --muted: #6d6480;
+  --panel: rgba(247, 245, 250, 0.92);
+  --hover: rgba(30, 20, 50, 0.06);
+}
+[data-theme="hyprland-minimal"] {
+  --bg: #0c0c0e;
+  --surface: #131316;
+  --surface-2: #1a1a1e;
+  --surface-3: #232329;
+  --border: rgba(255, 255, 255, 0.07);
+  --text: #e4e4e7;
+  --muted: #8b8b94;
+  --panel: rgba(12, 12, 14, 0.9);
+  --hover: rgba(255, 255, 255, 0.05);
+}
+[data-theme="midnight"] {
+  --bg: #05070f;
+  --surface: #0a0f1f;
+  --surface-2: #101830;
+  --surface-3: #182444;
+  --border: rgba(120, 150, 255, 0.14);
+  --text: #dbe4ff;
+  --muted: #8593b8;
+  --panel: rgba(5, 7, 15, 0.9);
+  --hover: rgba(120, 150, 255, 0.09);
+}
+[data-theme="high-contrast"] {
+  --bg: #000000;
+  --surface: #000000;
+  --surface-2: #111111;
+  --surface-3: #222222;
+  --border: #ffffff;
+  --text: #ffffff;
+  --muted: #d4d4d4;
+  --panel: rgba(0, 0, 0, 0.97);
+  --hover: rgba(255, 255, 255, 0.18);
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #000;
+  font-family: "Ubuntu", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: var(--ui-font-size);
+  color: var(--text);
+  user-select: none;
+}
+
+.mono { font-family: "JetBrains Mono", "Ubuntu Mono", ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+.wallpaper-ridge {
+  background:
+    radial-gradient(1100px 550px at 78% -10%, rgba(233, 84, 32, 0.5), transparent 60%),
+    radial-gradient(900px 600px at 8% 110%, rgba(119, 33, 111, 0.65), transparent 60%),
+    linear-gradient(160deg, #241533 0%, #171021 55%, #0d0a14 100%);
+}
+.wallpaper-ridge::after {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(173deg, transparent 62%, rgba(0,0,0,0.35) 62.2%, transparent 63%),
+    linear-gradient(168deg, transparent 70%, rgba(233,84,32,0.13) 70.2%, transparent 71%),
+    linear-gradient(178deg, transparent 76%, rgba(0,0,0,0.4) 76.2%, transparent 77%);
+}
+.wallpaper-dusk {
+  background:
+    radial-gradient(800px 400px at 20% 0%, rgba(44, 62, 120, 0.8), transparent 60%),
+    radial-gradient(700px 500px at 90% 100%, rgba(90, 30, 80, 0.6), transparent 60%),
+    linear-gradient(180deg, #0b1026 0%, #131a38 60%, #1b1030 100%);
+}
+.wallpaper-forest {
+  background:
+    radial-gradient(900px 500px at 50% -10%, rgba(64, 145, 108, 0.35), transparent 60%),
+    linear-gradient(180deg, #0a1f16 0%, #0d2b1d 55%, #071510 100%);
+}
+.wallpaper-mono {
+  background: linear-gradient(145deg, #1c1c1f 0%, #101012 60%, #0a0a0b 100%);
+}
+.wallpaper-sunset {
+  background:
+    radial-gradient(700px 380px at 50% 108%, rgba(255, 122, 26, 0.75), transparent 62%),
+    linear-gradient(180deg, #2b1030 0%, #57204a 48%, #93355a 78%, #c65a4e 100%);
+}
+
+.window-shell {
+  background: color-mix(in srgb, var(--surface) calc(var(--win-opacity) * 100%), transparent);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+  border-radius: var(--rounding);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+.window-focused {
+  border-color: color-mix(in srgb, var(--accent) 65%, transparent);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+@keyframes win-in {
+  from { opacity: 0; transform: scale(0.97) translateY(6px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+.win-in { animation: win-in 160ms ease-out; }
+@keyframes toast-in {
+  from { opacity: 0; transform: translateX(24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.toast-in { animation: toast-in 180ms ease-out; }
+
+::-webkit-scrollbar { width: 9px; height: 9px; }
+::-webkit-scrollbar-thumb { background: rgba(140, 140, 150, 0.35); border-radius: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+.xterm { padding: 8px; height: 100%; }
+.xterm-viewport::-webkit-scrollbar { width: 8px; }
+
+input, textarea, select { user-select: text; }
+button { cursor: pointer; }
