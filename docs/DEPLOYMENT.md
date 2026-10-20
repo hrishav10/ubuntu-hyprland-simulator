@@ -39,11 +39,14 @@ not use URL routing), and no COOP/COEP headers are needed because the
 chosen architecture (ARCHITECTURE.md, Approach A) uses neither
 WebContainers nor SharedArrayBuffer.
 
+Deployed production URL: https://ubuntu-hyprland-simulator.vercel.app
+(Deployment Protection/SSO is disabled for this project so the demo is publicly accessible.)
+
 ## Verification after deploy
 
 ```bash
-curl -sI https://<deployment-url>/ | head -5        # expect HTTP 200
-curl -s https://<deployment-url>/ | grep -o '<title>[^<]*</title>'
+curl -sI https://ubuntu-hyprland-simulator.vercel.app/ | head -5        # expect HTTP 200
+curl -s https://ubuntu-hyprland-simulator.vercel.app/ | grep -o '<title>[^<]*</title>'
 # expect: <title>Ubuntu Desktop — Hyprland-style Simulator</title>
 ```
 

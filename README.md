@@ -14,6 +14,9 @@ change what the system can do, and 19 applications.
 > Full statements: [docs/SECURITY_MODEL.md](docs/SECURITY_MODEL.md) and
 > [docs/KNOWN_LIMITATIONS.md](docs/KNOWN_LIMITATIONS.md).
 
+**Live demo: https://ubuntu-hyprland-simulator.vercel.app** (public, no login)
+**Code: https://github.com/hrishav10/ubuntu-hyprland-simulator**
+
 ## Try it
 
 - **Terminal** (Super+Q): 60+ commands with pipes, redirection, history,
